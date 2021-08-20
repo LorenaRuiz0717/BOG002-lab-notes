@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.containerNotas{
+  overflow: hidden;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.main{
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;  
+  background-image: url(../assets/fondoNotas.jpg); 
+  background-size: cover;
+  text-align: center;
+  background-repeat: no-repeat; 
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+header {
+  position: sticky;
+  top: 0px;
+  background-color:#c6db05;
+  width: 100%;
+  z-index: 1000;
+  /* height: 3rem; */
+  
+}
+
+/* section {
+  position: relative;
+  height: calc(100vh-3rem);
+  width: 100%;
+  background-image: url(../assets/acuarela.jpg);
+  overflow: hidden;
+ /* align-items: center; */
+
+
+/* .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color:white;
+  /* background-image: url(../assets/tablero1\ 1.png);
+} */
+
+
+.containerLogo{
+  display:flex;
+max-width: 65rem;
+padding: 0 2rem;
+height:3rem;
+margin: 0 auto;
+/* display: flex; */
+align-items: center;
+
+background-color:#c6db05;
+/* background-color: #8dc8d4; */
+flex:1;
+
+/* align-items: center; */
+}
+
+/* .logoContainer{
+
+} */
+ 
+.navBtn{
+  flex:3;
+  display: flex;
+}
+
+.navLinks{
+  flex: 2;
+}
+
+/* a{
+  color:black;
+} */
+
+.logoSign{
+  display: flex;
+  justify-content: center;
+flex: 1;
+/* background-color: silver; */
+align-items: center;
+}
+
+.logoNotes{
+  /* color:white; */
+  font-size: 1.2rem;
+  font-weight: 600; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color:none;
+  justify-content: center;
+  align-items: center;
+  font-family:monospace;
+  font-family: "Fredericka the Great", cursive;
+  color:#093F98;
+}
+.logo span{
+  font-weight: 300;
+  background-color:none;
+}
+
+.btn{ 
+  display: inline-block;
+  padding: .5rem 1.3rem;
+  font-size: .8rem;
+  border: 2px solid #093F98;
+  border-radius: 2rem;
+  line-height: 1;
+  margin: 0.8em .2rem;
+  transition: .3s;
+  background-color: #f79708;
+  /* background-color:#093F98 ; */
+  color:#093F98;
+}
+
+.navLinks > ul {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.navLink  {
+  line-height: 3rem;
+  color:#093F98;
+  padding: 0 3rem;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: .5s ;
+}
+
+.navLink > a > i {
+  margin-left:  .2rem;
+}
+
+.navLink:hover>a{
+  transform: scale(1.1);
+}
+
+.aside{
+  float: left;
+  width: 18vw;
+  height: 85vh;
+  /* font-size: inherit; */
+  position: relative;
+  /* top: 1vh; */
+  /* padding: 0%; */
+  margin:1% 1% auto;
+  background: rgba(255, 157, 11, 0.7);
+  /* opacity: 10; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* border-radius: 2%; */
+ }
+/* 
+ .about{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: auto;
+    width: 505vw;
+    height: 75vh;
+    background-color: transparent;
+ } */
+
+.about{
+  border-radius: 2%;
+  /* margin: 3%; */
+  padding: 5% 8%;
+  /* height: 3vh; */
+  /* width: 2vw; */
+  align-items: center;
+  text-align: left;
+  color:black;
+  font-size: 1rem;
+  position: relative;
+  /* top: -1em; */
+  background-color:rgba(198, 219,5,0.8);
+ }
+
+ .about>h3{
+   font-size:0.8em;
+   padding:3% 0% 3%;
+   color:#093F98 ;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+.addNote{
+  width: 100%;
+  position: relative;
+  margin-top: 8px;
+  /* border-bottom: khaki; */
+   /* box-shadow: 2px 4px 15px 5px black; */
+  /* font-family: 'Shadows Into Light', cursive; */
+  
+}
+
+.aboutAs{
+  background-color: #f79708;
+  border-radius: 50px;
+  margin: 10%;
+  padding: 2% ;
+  align-items: center;
+  text-align: left;
+  color: #093F98;
+  font-size: 1.5em;
+  position: relative;
+  /* background-color:rgba(198, 219,5,0.9  ); */
+
+}
+
+
+.containerWorks{
+  background-color: transparent;
+  /* margin-left: 15%; */
+  /* display: block; */
+  /* margin-top: 5%; */
+}
+.work{
+  display: inline-flex;
+flex-wrap: wrap;
+  justify-content: space-between;
+  background-color:rgba(255, 157, 11, 0.7);
+  height: auto;
+  width:10em;
+  margin-top: 1%;
+  /* margin-left:10%; */
+  border-radius: 2%;
+  /* text-align: left  ; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.works h3 {
+ text-align: center;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* background-color: blueviolet; */
+  margin: 5%;
+  font-size: 100%;
+} 
+
+.work h4{
+  /* background-color: blue; */
+  align-content: center;
+  justify-content: center;
+  margin-left: 30%;
+  color: #093F98;
+}
