@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.container{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  background-image: url(../assets/fondo2.jpg);
+  background-size: cover;
+  text-align: center;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  margin-top: 1.4em;
+  font-family: "Fredericka the Great", cursive;
+  /* color:#007958; */
+  color:#093F98;
+  font-size: 80px;
+  
+}
+
+.formulario {
+ display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:transparent;
+  padding: 2em;
+  margin:1em;
+  font-size: 20px;
+  color:black;
+  /* box-shadow: 2px 4px 15px 5px black; */
+  /* font-family: 'Shadows Into Light', cursive; */
+  font-family: 'Acme', sans-serif;
+  margin-top: 1em;
+  
+  
+}
+
+label{
+  margin: 0.3em;
+}
+.email,
+.password {
+  height: 40px;
+  width: 25vw;
+  /* background-color:#FF9A00; */
+  background-color:#EAB668;
+  color:black;
+  border: 3px solid #FF9A00;
+  border-radius:0.2em;
+  font-size: 1em;
+  text-align: center;
+  /* margin:0.1em;  */
+  padding: 1em;
+  font-family: 'Acme', sans-serif;
+
+}
+.errormsg{
+  font-size: 75%;
+}
+.loginIn {
+  height:40px;
+  width: 10vw;
+  background-color:#007958;
+  margin-top: 1em;
+  border: 2px solid rgb(85, 68, 68);
+  border-radius: 10px;
+  color:white;
+  font-size: 1em;
+  font-family: 'Acme', sans-serif;
+}
+
+.link {
+  /* color: white; */
+  /* background-color: transparent; */
+  text-decoration-line: underline;
+  border: none;
+  /* font-family: "Fredericka the Great", cursive; */
+  font-size: 0.8em;
+  /* margin-top: 0.5em; */
+  font-family: 'Acme', sans-serif;
+}
+.errormsg{
+  font-size: small;
+  margin-top: 0;
+}
+
+
+
+.containerIcons{
+  /* margin-top: 2%; */
+  /* line-height: 3rem; */
+  /* color:#093F98; */
+  padding: 0 3rem;
+  /* letter-spacing: 3px; */
+  font-size: 1rem;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* transition: .5s ; */
+}
+
+.facebook{
+  width:3em;
+}
+.gmail{
+  width:3em;
+}
+
+.gmailBoton{ 
+  background-image: url(../assets/gmail.png);
+  /* width: 130px; */
+}
+
+/* @media(max-width:900px){
+/* @media screen and (min-width: 768px) { */
+
+    /* .container {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        justify-content: center;
+        background-image: url(./assets/fondo2.jpg);
+        background-color: black;
+        background-attachment: fixed;
+        background-size:cover; 
+        background-repeat: no-repeat;
+      }
+}  */
