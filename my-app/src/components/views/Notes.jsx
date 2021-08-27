@@ -1,47 +1,65 @@
 import React, { useEffect, useState } from "react";
 // import Welcome from './components/Welcome';
-import "../Styles/Notes.css";
+
 import addNote from "../assets/addNote1.png";
 import { Link } from "react-router-dom";
 import fire from "../firebase";
 import AddNotes from "./AddNote";
-  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Modal
+  // , ModalHeader, ModalBody, ModalFooter 
+} from "reactstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import "../Styles/Notes.css";
 
+// class Notes extends React.Component{
+//   constructor(props){
+//     super(props)
+//   }
 
 export const Notes = () => {
+
   const handleLogout = () => {
     fire.auth().signOut();
   };
 
   const [notes, setNotes] = useState([]);
-  const [currentId,setCurrentId]=useState('')
+  const [currentId, setCurrentId] = useState("");
+  const [modalOpen, setOpen] = useState(false);
+
 
   const addInfo = async (noteObject) => {
-    if(currentId===''){
-    await fire.firestore().collection("notes").doc().set(noteObject);
-    toast('Add Note',{
-      type:'success',
-      autoClose: 2000,
-    })
-  }else{
-    await fire.firestore().collection("notes").doc(currentId).update(noteObject)
-    toast('Edit Note',{
-      type:'info',
-      // autoClose: 2000,
-    })
-    setCurrentId('');
-  }
-};
-const time = new Date().toLocaleDateString('en-GB',{
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric', 
-  hour: "2-digit",
-  minute: "2-digit"
- })
+    if (currentId === "") {
+      await fire.firestore().collection("notes").doc().set(noteObject);
+      setOpen(false)
+      toast("Add Note", {
+        type: "success",
+        autoClose: 2000,
+      });
+    } else {
+      await fire
+        .firestore()
+        .collection("notes")
+        .doc(currentId)
+        .update(noteObject);
+        setOpen(false)
+      toast("Edit Note", {
+        type: "info",
+        // autoClose: 2000,
+      });
+      setCurrentId("");
+      
+    }
+  };
+  // const time = new Date().toLocaleDateString("en-GB", {
+  //   day: "numeric",
+  //   month: "long",
+  //   year: "numeric",
+  //   hour: "2-digit",
+  //   minute: "2-digit",
+  // });
 
- 
   const getNotes = async () => {
     fire
       .firestore()
@@ -57,28 +75,24 @@ const time = new Date().toLocaleDateString('en-GB',{
       });
   };
 
-
-  // const onDelete=()=>{
-  //   console.log('delete')
-  // }
-  const onDelete=async(id)=>{
-    if(window.confirm('Are you sure you want to delete this note?')){
-    await  fire.firestore().collection('notes').doc(id).delete();
-    toast('Delete Note',{
-      type:'error',
-      autoClose: 2000,
-    })
-  }
-}
-  
+  const onDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this note?")) {
+      await fire.firestore().collection("notes").doc(id).delete();
+      toast("Delete Note", {
+        type: "error",
+        autoClose: 2000,
+      });
+    }
+  };
 
   useEffect(() => {
     getNotes();
   }, []);
 
-   return (
+  // render(){
+  return (
     <div className="containerNotas">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="containerNotes">
         <header>
           <div className="containerLogo">
@@ -116,31 +130,49 @@ const time = new Date().toLocaleDateString('en-GB',{
               <h3>Course: 3.3</h3>
             </div>
             <div className="addNote">
-              <img src={addNote} alt="note" className="addNote" />
+              {/* <button className="btn" >
+                Add note
+              </button> */}
+              <img src={addNote} alt="note" className="addNote" onClick={() => setOpen(true)}/>
             </div>
           </aside>
           <div>
-            {/* {" "} */}
-            <AddNotes {...{addInfo,currentId, notes}}></AddNotes>
-            {/* <AddNotes addInfo={infoNotes}></AddNotes> */}
-            <div className='containerWorks'>
+            <Modal isOpen={modalOpen}>
+              {/* <ModalHeader>Note</ModalHeader>
+              <ModalBody> */}
+                <AddNotes {...{ addInfo, currentId, notes, modalOpen }}></AddNotes>
+              {/* </ModalBody>
+              <ModalFooter></ModalFooter> */}
+            </Modal>
+            <div className="containerWorks">
               {notes.map((note) => (
-                <div className='works'key={note.id}>
-                  <div className='work'>
+                <div className="works" key={note.id}>
+                  <div className="work">
                     {/* <div className='background-color'> */}
-                  <div className='format'>
-                    <h4>Work</h4>
-                    {/* </div> */}
-                    <i className='material-icons'onClick={()=>onDelete(note.id)}>close</i>
-                    <i className='material-icons'onClick={()=>setCurrentId(note.id)}>create</i>
+                    <div className="format">
+                      <h4>Work</h4>
+                      {/* </div> */}
+                      <i
+                        className="material-icons"
+                        onClick={() => onDelete(note.id)}
+                      >
+                        close
+                      </i>
+                      <i
+                        className="material-icons"
+                        onClick={() => setCurrentId(note.id)}
+                      >
+                        create
+                      </i>
                     </div>
                     <h3>Class: {note.Class}</h3>
                     <h3>Title: {note.Title}</h3>
                     <p>Description: {note.Description}</p>
-                    <h3 className='date'>Date:{note.Date}</h3>
-                    <p className='date'>{note.lastModified}</p>
-                    </div>
-               </div>))}
+                    <h3 className="date">Date:{note.Date}</h3>
+                    <p className="date">{note.lastModified}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </main>

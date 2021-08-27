@@ -15,7 +15,8 @@ var firebaseConfig = {
   const fire=firebase.initializeApp(firebaseConfig);
   export const db=fire.firestore();
   export const googleProvider = new firebase.auth.GoogleAuthProvider();
-  
+
+  //Offline  
   firebase.firestore().enablePersistence()
   .catch((err) => {
       if (err.code ==='failed-precondition') {

@@ -4,7 +4,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 .containerNotas{
@@ -171,7 +171,7 @@ align-items: center;
 
 .containerWorks{
   flex-wrap:  wrap;
-  margin-left:40%;
+  /* margin-left:40%; */
   display: flex;
 }
 

@@ -7,6 +7,8 @@ const AddNotes = (props) => {
   const {
     addInfo,
   }=props
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialStateValues = {
     Class: "",
     Title: "",
@@ -19,12 +21,7 @@ const AddNotes = (props) => {
       setValues({ ...values, [e.target.name]: e.target.value });
       // console.log(e.target.value)
     };
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   //    console.log(name,value)
-  //   setValues({ ...values, [name]: value });
-  //   // console.log(e.target.value)
-  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addInfo({...values,lastModified:time});
@@ -56,10 +53,10 @@ const AddNotes = (props) => {
 
   return (
     <form className="Note" onSubmit={handleSubmit}>
-      <div>
+      <div className='nameNote'>
         <h3>Note</h3>
       </div>
-      <div>
+      <div className='input'>
         <input
           type="text"
           name="Class"
@@ -68,9 +65,7 @@ const AddNotes = (props) => {
           onChange={handleInputChange}
           value={values.Class}
         />
-        {/* <i className="material-icons">class</i> */}
-      </div>
-      <input
+       <input
         type="text"
         name="Title"
         className="Title"
@@ -97,7 +92,9 @@ const AddNotes = (props) => {
       <p className='dateCreation'>{time}</p>
       <button className='btn'>
         {props.currentId===''?'Save':'Update' }
+      
       </button>
+      </div>
     </form>
   );
 };
