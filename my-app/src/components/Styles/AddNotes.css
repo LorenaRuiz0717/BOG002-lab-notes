@@ -36,3 +36,13 @@ input {
 .background-color{
     background-color: #093F98;
 }
+
+.dateCreation{
+    font-size: 0.9em;   
+}
+
+@media (max-width:768px){
+    .Note{
+        background-color: violet;
+    }
+}

@@ -16,4 +16,19 @@ var firebaseConfig = {
   export const db=fire.firestore();
   export const googleProvider = new firebase.auth.GoogleAuthProvider();
   
+  firebase.firestore().enablePersistence()
+  .catch((err) => {
+      if (err.code ==='failed-precondition') {
+        console.log('offline')
+          // Multiple tabs open, persistence can only be enabled
+          // in one tab at a a time.
+          // ...
+      } else if (err.code === 'unimplemented') {
+        console.log('off-line1')
+          // The current browser does not support all of the
+          // features required to enable persistence
+          // ...
+      }
+  });
+// Subsequent queries will use persistence, if it was enabled successfully
   export default fire;

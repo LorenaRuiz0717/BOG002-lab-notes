@@ -40,6 +40,8 @@ const time = new Date().toLocaleDateString('en-GB',{
   hour: "2-digit",
   minute: "2-digit"
  })
+
+ 
   const getNotes = async () => {
     fire
       .firestore()
@@ -55,6 +57,10 @@ const time = new Date().toLocaleDateString('en-GB',{
       });
   };
 
+
+  // const onDelete=()=>{
+  //   console.log('delete')
+  // }
   const onDelete=async(id)=>{
     if(window.confirm('Are you sure you want to delete this note?')){
     await  fire.firestore().collection('notes').doc(id).delete();
@@ -63,7 +69,8 @@ const time = new Date().toLocaleDateString('en-GB',{
       autoClose: 2000,
     })
   }
-  }
+}
+  
 
   useEffect(() => {
     getNotes();
@@ -121,15 +128,17 @@ const time = new Date().toLocaleDateString('en-GB',{
                 <div className='works'key={note.id}>
                   <div className='work'>
                     {/* <div className='background-color'> */}
+                  <div className='format'>
                     <h4>Work</h4>
                     {/* </div> */}
                     <i className='material-icons'onClick={()=>onDelete(note.id)}>close</i>
                     <i className='material-icons'onClick={()=>setCurrentId(note.id)}>create</i>
+                    </div>
                     <h3>Class: {note.Class}</h3>
                     <h3>Title: {note.Title}</h3>
                     <p>Description: {note.Description}</p>
-                    <h3>Date:{note.Date}</h3>
-                    <p>{note.lastModified}</p>
+                    <h3 className='date'>Date:{note.Date}</h3>
+                    <p className='date'>{note.lastModified}</p>
                     </div>
                </div>))}
             </div>

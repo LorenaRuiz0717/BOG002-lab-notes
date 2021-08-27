@@ -94,7 +94,7 @@ const AddNotes = (props) => {
         onChange={handleInputChange}
         value={values.Date}
       />
-      <p>{time}</p>
+      <p className='dateCreation'>{time}</p>
       <button className='btn'>
         {props.currentId===''?'Save':'Update' }
       </button>
