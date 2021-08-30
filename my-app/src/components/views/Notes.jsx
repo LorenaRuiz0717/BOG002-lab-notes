@@ -7,8 +7,9 @@ import fire from "../firebase";
 import AddNotes from "./AddNote";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Modal
-  // , ModalHeader, ModalBody, ModalFooter 
+import {
+  Modal,
+  // , ModalHeader, ModalBody, ModalFooter
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Styles/Notes.css";
@@ -19,7 +20,6 @@ import "../Styles/Notes.css";
 //   }
 
 export const Notes = () => {
-
   const handleLogout = () => {
     fire.auth().signOut();
   };
@@ -28,11 +28,10 @@ export const Notes = () => {
   const [currentId, setCurrentId] = useState("");
   const [modalOpen, setOpen] = useState(false);
 
-
   const addInfo = async (noteObject) => {
     if (currentId === "") {
       await fire.firestore().collection("notes").doc().set(noteObject);
-      setOpen(false)
+      setOpen(false);
       toast("Add Note", {
         type: "success",
         autoClose: 2000,
@@ -40,16 +39,16 @@ export const Notes = () => {
     } else {
       await fire
         .firestore()
-        .collection("notes")
+        .collection("notes") 
         .doc(currentId)
         .update(noteObject);
-        setOpen(false)
+      setOpen(false);
       toast("Edit Note", {
         type: "info",
         // autoClose: 2000,
       });
-      setCurrentId("");
-      
+      setCurrentId("")
+      ;
     }
   };
   // const time = new Date().toLocaleDateString("en-GB", {
@@ -84,6 +83,11 @@ export const Notes = () => {
       });
     }
   };
+
+  const modalEdit=async(id)=>{
+    setCurrentId(id)
+    await setOpen(true)
+  }
 
   useEffect(() => {
     getNotes();
@@ -130,19 +134,20 @@ export const Notes = () => {
               <h3>Course: 3.3</h3>
             </div>
             <div className="addNote">
-              {/* <button className="btn" >
-                Add note
-              </button> */}
-              <img src={addNote} alt="note" className="addNote" onClick={() => setOpen(true)}/>
+              <img
+                src={addNote}
+                alt="note"
+                className="addNote"
+                onClick={() => setOpen(true)}
+              />
             </div>
           </aside>
           <div>
             <Modal isOpen={modalOpen}>
-              {/* <ModalHeader>Note</ModalHeader>
-              <ModalBody> */}
-                <AddNotes {...{ addInfo, currentId, notes, modalOpen }}></AddNotes>
-              {/* </ModalBody>
-              <ModalFooter></ModalFooter> */}
+              <AddNotes
+                setOpen={setOpen}
+                {...{ addInfo, currentId, notes, modalOpen}}
+              ></AddNotes>
             </Modal>
             <div className="containerWorks">
               {notes.map((note) => (
@@ -160,16 +165,21 @@ export const Notes = () => {
                       </i>
                       <i
                         className="material-icons"
-                        onClick={() => setCurrentId(note.id)}
+                        onClick={()=>modalEdit(note.id)}
+                        // onClick={() => setOpen(true)}
+                        // onClick={() =>setOpen(true) }
+                        // onClick={()=>  setCurrentId(note.id)}
                       >
                         create
                       </i>
                     </div>
-                    <h3>Class: {note.Class}</h3>
-                    <h3>Title: {note.Title}</h3>
-                    <p>Description: {note.Description}</p>
-                    <h3 className="date">Date:{note.Date}</h3>
+                    <div className="note">
+                    <h3>Class:</h3><h5> {note.Class}</h5>
+                    <h3>Title:</h3><h5> {note.Title}</h5>
+                    <h3>Description:</h3><h5>{note.Description}</h5>
+                    <h3 className="date">Date:</h3><h5>{note.Date}</h5>
                     <p className="date">{note.lastModified}</p>
+                    </div>
                   </div>
                 </div>
               ))}

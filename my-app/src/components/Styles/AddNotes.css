@@ -3,8 +3,10 @@
 
 .Note{
     background-color:rgba(255, 157, 11, 0.7);
-    height: auto;
-    width: auto;  
+    /* height: auto;
+    width: auto;   */
+    display: flex;
+    flex-direction: column;
     /* display:inline; */
     /* align-items: center; */
     /* position: relative; */
@@ -22,10 +24,9 @@ h3{
 }
 .input{
      font-family:Verdana, Geneva, Tahoma, sans-serif;
-    /* display:inline-table; */
-    /* flex-wrap: wrap; */
-    /* padding: 5%; */
-    /* margin: 10% ; */
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .work h4{
@@ -46,6 +47,32 @@ h3{
 
 .modal-content{
     margin-top: 35%;
+}
+.nameNote{
+    display:inline-flex;
+    justify-content: space-between;
+    background-color:rgba(198, 219,5,0.8);
+    width:100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nameNote>h3{
+ margin-left: 40%;
+}
+.nameNote>i{
+    margin-top:1%;
+}
+.Class, .Title , .Description, .Date{
+  /* background-color: #093F98; */
+    height: 3em;
+    width: 80%;
+    /* margin-left: 10%; */
+    margin-top: 1em;
+}
+.dateCreation{
+    width: 100%;
+    margin-top: 1em;
+    text-align: center;
 }
 @media (max-width:768px){
     .Note{

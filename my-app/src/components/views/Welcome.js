@@ -20,7 +20,7 @@ const Welcome = (props) => {
    } = props;
 
    return (
-      <div className='container'>
+      <div className='containerWelcome'>
          <div className='container1'>
             <h1 className='logo'>School Notes</h1>
             <form className='formulario'>
